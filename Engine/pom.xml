@@ -2,16 +2,39 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ingenious.tag.mfa</groupId>
+    <groupId>io.github.singcaneil</groupId>
     <artifactId>tagmfa</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>tagmfa</name>
     <description>Library for MFA automation using INGenious framework</description>
+    <url>https://github.com/singcaneil/tagmfa</url>
 
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>singcaneil</id>
+            <name>Neil Emil Singca</name>
+            <email>your-email@example.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:https://github.com/singcaneil/tagmfa.git</connection>
+        <developerConnection>scm:git:https://github.com/singcaneil/tagmfa.git</developerConnection>
+        <url>https://github.com/singcaneil/tagmfa</url>
+    </scm>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -19,23 +42,56 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <build>
+        <plugins>
+            <!-- Central Publishing Plugin -->
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>1.0.0</version>
+            </plugin>
+
+            <!-- Source JAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Javadoc JAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.4.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
-
-        <!-- These dependencies are provided by the INGenious framework runtime -->
-        <!-- They are not available in public Maven repositories -->
-        <!-- Do not attempt to resolve them during local builds -->
-
-
         <dependency>
             <groupId>com.ing</groupId>
-            <artifactId>ingenious-datalib</artifactId>
+            <artifactId>ingenious-engine</artifactId>
             <version>2.0</version>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
-
-
 
 </project>
